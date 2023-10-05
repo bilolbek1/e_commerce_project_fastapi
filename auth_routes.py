@@ -165,7 +165,7 @@ async def profile(Authorize: AuthJWT=Depends()):
 
 #
 #
-# @auth_router.patch("/user/profile/update")
+# @auth_router.put("/user/profile/update")
 # async def profile_update(profile_data: ProfileModel, Authorize: AuthJWT=Depends()):
 #     try:
 #         Authorize.jwt_required()
@@ -176,41 +176,37 @@ async def profile(Authorize: AuthJWT=Depends()):
 #     current_user = Authorize.get_jwt_subject()
 #     user = session.query(User).filter(User.username == current_user).first()
 #
-#     if user == profile_data:
 #
-#         user.username = profile_data.username
-#         user.first_name = profile_data.first_name
-#         user.last_name = profile_data.last_name
-#         user.email = profile_data.email
-#         user.is_active = profile_data.is_active
+#     user.username = profile_data.username
+#     user.first_name = profile_data.first_name
+#     user.last_name = profile_data.last_name
+#     user.email = profile_data.email
+#     user.is_active = profile_data.is_active
 #
-#         session.commit()
+#     session.commit()
 #
-#         user_profile = {
-#             "id": user.id,
-#             "username": profile_data.username,
-#             "first_name": profile_data.first_name,
-#             "last_name": profile_data.last_name,
-#             "email": profile_data.email,
-#             "is_active": profile_data.is_active
-#         }
+#     user_profile = {
+#         "id": user.id,
+#         "username": profile_data.username,
+#         "first_name": profile_data.first_name,
+#         "last_name": profile_data.last_name,
+#         "email": profile_data.email,
+#         "is_active": profile_data.is_active
+#     }
 #
-#         data = {
-#             "success": True,
-#             "status": status.HTTP_200_OK,
-#             "message": "Successfully updated your profile",
-#             "user": user_profile
-#         }
+#     data = {
+#         "success": True,
+#         "status": status.HTTP_200_OK,
+#         "message": "Successfully updated your profile",
+#         "user": user_profile
+#     }
 #
-#         return jsonable_encoder(data)
-#
-#
-#     raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
-#                         detail="Po'q xato bo'ldi")
+#     return jsonable_encoder(data)
 #
 #
-
-
+#
+#
+#
 
 
 

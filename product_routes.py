@@ -168,54 +168,54 @@ async def delete(id: int, Authorize: AuthJWT=Depends()):
 
 
 
-#
-#
-# @product_router.patch("/{id}/update")
-# async def product_update(product: ProductModel, Authorize:AuthJWT=Depends()):
-#     try:
-#         Authorize.jwt_required()
-#     except Exception as e:
-#         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
-#                             detail="Invalid token")
-#
-#     current_user = Authorize.get_jwt_subject()
-#     user = session.query(User).filter(User.username == current_user).first()
-#
-#     if user.is_staff:
-#         update_product = session.query(Product).filter(Product.id == id).first()
-#
-#         update_product.name = product.name
-#         update_product.description = product.description
-#         update_product.old_price = product.old_price
-#         update_product.new_price = product.new_price
-#
-#         session.commit()
-#
-#         updated_product = {
-#             "id": product.id,
-#             "name": product.name,
-#             "description": product.description,
-#             "old_price": product.old_price,
-#             "new_price": product.new_price
-#         }
-#
-#         data = {
-#             "success": True,
-#             "status": 201,
-#             "message": "Successfully updated product",
-#             "product":updated_product
-#
-#         }
-#
-#         return jsonable_encoder(data)
-#
-#
-#     raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
-#                         detail="This page only for Super users")
-#
-#
-#
-#
+
+
+@product_router.put("/{id}/update")
+async def product_update(id: int, product: ProductModel, Authorize:AuthJWT=Depends()):
+    try:
+        Authorize.jwt_required()
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
+                            detail="Invalid token")
+
+    current_user = Authorize.get_jwt_subject()
+    user = session.query(User).filter(User.username == current_user).first()
+
+    if user.is_staff:
+        update_product = session.query(Product).filter(Product.id == id).first()
+
+        update_product.name = product.name
+        update_product.description = product.description
+        update_product.old_price = product.old_price
+        update_product.new_price = product.new_price
+
+        session.commit()
+
+        updated_product = {
+            "id": product.id,
+            "name": product.name,
+            "description": product.description,
+            "old_price": product.old_price,
+            "new_price": product.new_price
+        }
+
+        data = {
+            "success": True,
+            "status": 201,
+            "message": "Successfully updated product",
+            "product":updated_product
+
+        }
+
+        return jsonable_encoder(data)
+
+
+    raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
+                        detail="This page only for Super users")
+
+
+
+
 
 
 
