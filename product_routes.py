@@ -82,6 +82,7 @@ async def create_product(product:ProductModel, Authorize:AuthJWT=Depends()):
 
 
 
+
 @product_router.get("/list")
 async def products_list(Authorize:AuthJWT=Depends()):
     try:
@@ -109,6 +110,7 @@ async def products_list(Authorize:AuthJWT=Depends()):
 
 
 
+
 @product_router.get("/{id}")
 async def products_list(id: int, Authorize:AuthJWT=Depends()):
     try:
@@ -124,6 +126,7 @@ async def products_list(id: int, Authorize:AuthJWT=Depends()):
 
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                         detail="Product not found with this id")
+
 
 
 

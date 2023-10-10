@@ -163,7 +163,7 @@ async def profile(Authorize: AuthJWT=Depends()):
     return jsonable_encoder(user_data)
 
 
-#
+
 #
 # @auth_router.put("/user/profile/update")
 # async def profile_update(profile_data: ProfileModel, Authorize: AuthJWT=Depends()):
@@ -207,8 +207,8 @@ async def profile(Authorize: AuthJWT=Depends()):
 #
 #
 #
-
-
+#
+#
 
 
 
